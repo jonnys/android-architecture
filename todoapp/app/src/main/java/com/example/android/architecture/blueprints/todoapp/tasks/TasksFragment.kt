@@ -59,6 +59,8 @@ class TasksFragment : Fragment(), TasksContract.View {
     private lateinit var tasksView: LinearLayout
     private lateinit var filteringLabelView: TextView
 
+    override fun getContext() = super.getContext()!!
+
     /**
      * Listener for clicks on tasks in the ListView.
      */
@@ -98,9 +100,9 @@ class TasksFragment : Fragment(), TasksContract.View {
             // Set up progress indicator
             findViewById<ScrollChildSwipeRefreshLayout>(R.id.refresh_layout).apply {
                 setColorSchemeColors(
-                        ContextCompat.getColor(activity, R.color.colorPrimary),
-                        ContextCompat.getColor(activity, R.color.colorAccent),
-                        ContextCompat.getColor(activity, R.color.colorPrimaryDark)
+                        ContextCompat.getColor(context, R.color.colorPrimary),
+                        ContextCompat.getColor(context, R.color.colorAccent),
+                        ContextCompat.getColor(context, R.color.colorPrimaryDark)
                 )
                 // Set the scrolling view in the custom SwipeRefreshLayout.
                 scrollUpChild = listView
@@ -120,7 +122,7 @@ class TasksFragment : Fragment(), TasksContract.View {
         }
 
         // Set up floating action button
-        activity.findViewById<FloatingActionButton>(R.id.fab_add_task).apply {
+        activity!!.findViewById<FloatingActionButton>(R.id.fab_add_task).apply {
             setImageResource(R.drawable.ic_add)
             setOnClickListener { presenter.addNewTask() }
         }
@@ -143,7 +145,7 @@ class TasksFragment : Fragment(), TasksContract.View {
     }
 
     override fun showFilteringPopUpMenu() {
-        PopupMenu(context, activity.findViewById(R.id.menu_filter)).apply {
+        PopupMenu(context, activity!!.findViewById(R.id.menu_filter)).apply {
             menuInflater.inflate(R.menu.filter_tasks, menu)
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
