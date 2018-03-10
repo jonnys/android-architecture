@@ -1,10 +1,10 @@
 // Define versions in a single place
 ext {
     // Sdk and tools
-    minSdkVersion = 14
+    minSdkVersion = 19
     targetSdkVersion = 26
-    compileSdkVersion = 26
-    buildToolsVersion = '26.0.2'
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.3'
 
     // App dependencies
     supportLibraryVersion = '26.1.0'
@@ -19,8 +19,8 @@ ext {
 }
 
 buildscript {
-    ext.kotlinVersion = '1.1.51'
-    ext.gradlePluginVersion = '3.0.0'
+    ext.kotlinVersion = '1.2.21'
+    ext.gradlePluginVersion = '3.0.1'
     repositories {
         jcenter()
         google()
